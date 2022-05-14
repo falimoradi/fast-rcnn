@@ -105,8 +105,8 @@ def demo(net, image_name, classes):
                           cls_scores[:, np.newaxis])).astype(np.float32)
         keep = nms(dets, NMS_THRESH)
         dets = dets[keep, :]
-        print 'All {} detections with p({} | box) >= {:.1f}'.format(cls, cls,
-                                                                    CONF_THRESH)
+        print('All {} detections with p({} | box) >= {:.1f}'.format(cls, cls,
+                                                                    CONF_THRESH))
         vis_detections(im, cls, dets, thresh=CONF_THRESH)
 
 def parse_args():
@@ -143,14 +143,14 @@ if __name__ == '__main__':
         caffe.set_device(args.gpu_id)
     net = caffe.Net(prototxt, caffemodel, caffe.TEST)
 
-    print '\n\nLoaded network {:s}'.format(caffemodel)
+    print('\n\nLoaded network {:s}'.format(caffemodel))
 
-    print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-    print 'Demo for data/demo/000004.jpg'
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print('Demo for data/demo/000004.jpg')
     demo(net, '000004', ('car',))
 
-    print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-    print 'Demo for data/demo/001551.jpg'
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print('Demo for data/demo/001551.jpg')
     demo(net, '001551', ('sofa', 'tvmonitor'))
 
     plt.show()
